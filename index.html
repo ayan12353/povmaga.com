@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>POVMAGA - Stories, Ideas & Trends</title>
+
+<meta name="description" content="POVMAGA brings you fresh stories, technology, lifestyle, entertainment and trending topics.">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f7f5;
+    color:#171717;
+    line-height:1.6;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+/* HEADER */
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#fff;
+    border-bottom:1px solid #e5e5e5;
+}
+
+.nav{
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:-1.5px;
+}
+
+.logo span{
+    font-weight:400;
+}
+
+nav{
+    display:flex;
+    gap:28px;
+}
+
+nav a{
+    font-size:14px;
+    font-weight:600;
+    transition:.2s;
+}
+
+nav a:hover{
+    opacity:.5;
+}
+
+.nav-actions{
+    display:flex;
+    gap:10px;
+}
+
+.nav-actions button{
+    width:40px;
+    height:40px;
+    border:1px solid #ddd;
+    background:#fff;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:19px;
+}
+
+.menu-btn{
+    display:none;
+}
+
+/* SEARCH */
+.search-area{
+    display:none;
+    background:#fff;
+    border-bottom:1px solid #ddd;
+    padding:15px 0;
+}
+
+.search-area.active{
+    display:block;
+}
+
+.search-area input{
+    width:100%;
+    padding:14px 18px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+}
+
+/* HERO */
+.hero{
+    padding:65px 0;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.hero-content{
+    background:#171717;
+    color:#fff;
+    padding:60px 50px;
+    border-radius:16px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.badge{
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(45px,6vw,70px);
+    line-height:1;
+    letter-spacing:-3px;
+    margin-bottom:24px;
+}
+
+.hero p{
+    color:#c9c9c9;
+    max-width:500px;
+    margin-bottom:28px;
+}
+
+.primary-btn{
+    width:max-content;
+    padding:13px 20px;
+    background:#fff;
+    color:#111;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.hero-card{
+    min-height:450px;
+    border-radius:16px;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg,#111,#555,#aaa);
+}
+
+.hero-overlay{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:35px;
+    color:#fff;
+    background:linear-gradient(transparent,rgba(0,0,0,.9));
+}
+
+.hero-overlay span{
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+.hero-overlay h2{
+    font-size:32px;
+    line-height:1.15;
+    margin:10px 0;
+}
+
+/* SECTIONS */
+.categories,
+.articles-section{
+    padding:65px 0;
+}
+
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:30px;
+}
+
+.small-title{
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:2px;
+    opacity:.55;
+}
+
+.section-heading h2{
+    font-size:36px;
+    line-height:1.1;
+    margin-top:6px;
+}
+
+.view-all{
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* CATEGORIES */
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.category-card{
+    background:#fff;
+    padding:25px;
+    border:1px solid #e5e5e5;
+    border-radius:12px;
+    transition:.25s;
+}
+
+.category-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.category-icon{
+    font-size:28px;
+    margin-bottom:14px;
+}
+
+.category-card h3{
+    margin-bottom:5px;
+}
+
+.category-card p{
+    font-size:13px;
+    color:#777;
+}
+
+/* ARTICLES */
+.article-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.article-card{
+    background:#fff;
+    border:1px solid #e5e5e5;
+    border-radius:14px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.article-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.article-image{
+    height:235px;
+    display:flex;
+    align-items:end;
+    padding:20px;
+}
+
+.article-image span{
+    color:#fff;
+    background:rgba(0,0,0,.65);
+    padding:7px 10px;
+    border-radius:4px;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+}
+
+.tech-image{
+    background:linear-gradient(135deg,#111,#555,#aaa);
+}
+
+.life-image{
+    background:linear-gradient(135deg,#eee,#999,#333);
+}
+
+.trend-image{
+    background:linear-gradient(135deg,#222,#777,#ccc);
+}
+
+.ent-image{
+    background:linear-gradient(135deg,#444,#111,#999);
+}
+
+.article-content{
+    padding:25px;
+}
+
+.article-meta{
+    display:flex;
+    gap:8px;
+    color:#777;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.article-content h3{
+    font-size:23px;
+    line-height:1.25;
+    margin-bottom:12px;
+}
+
+.article-content p{
+    font-size:14px;
+    color:#666;
+    margin-bottom:18px;
+}
+
+.read-more{
+    font-size:13px;
+    font-weight:bold;
+}
+
+.no-results{
+    display:none;
+    text-align:center;
+    padding:40px;
+}
+
+/* NEWSLETTER */
+.newsletter{
+    padding:35px 0 75px;
+}
+
+.newsletter-box{
+    background:#171717;
+    color:#fff;
+    padding:45px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.newsletter-box h2{
+    font-size:32px;
+    margin:7px 0;
+}
+
+.newsletter-box p{
+    color:#aaa;
+}
+
+.newsletter form{
+    display:flex;
+    min-width:400px;
+}
+
+.newsletter input{
+    flex:1;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:6px 0 0 6px;
+}
+
+.newsletter button{
+    border:0;
+    padding:0 22px;
+    background:#fff;
+    color:#111;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:0 6px 6px 0;
+}
+
+/* FOOTER */
+.footer{
+    background:#111;
+    color:#fff;
+    padding-top:55px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:50px;
+    padding-bottom:45px;
+}
+
+.footer p{
+    color:#999;
+    max-width:350px;
+    margin-top:14px;
+}
+
+.footer h3{
+    font-size:15px;
+    margin-bottom:15px;
+}
+
+.footer-grid div a:not(.logo){
+    display:block;
+    color:#999;
+    font-size:13px;
+    margin:8px 0;
+}
+
+.footer-logo{
+    color:#fff;
+}
+
+.copyright{
+    border-top:1px solid #292929;
+    text-align:center;
+    color:#777;
+    padding:20px;
+    font-size:12px;
+}
+
+/* TOP BUTTON */
+.top-btn{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:45px;
+    height:45px;
+    border:0;
+    border-radius:50%;
+    background:#111;
+    color:#fff;
+    cursor:pointer;
+    display:none;
+    font-size:18px;
+}
+
+.top-btn.show{
+    display:block;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    nav{
+        position:absolute;
+        top:76px;
+        left:0;
+        width:100%;
+        display:none;
+        flex-direction:column;
+        gap:0;
+        background:#fff;
+        border-bottom:1px solid #ddd;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    nav a{
+        padding:15px 5%;
+        border-top:1px solid #eee;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .newsletter-box{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .newsletter form{
+        width:100%;
+        min-width:100%;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding:35px 0;
+    }
+
+    .hero-content{
+        padding:40px 25px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .hero-card{
+        min-height:330px;
+    }
+
+    .category-grid,
+    .article-grid,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-heading h2{
+        font-size:28px;
+    }
+
+    .newsletter-box{
+        padding:30px 20px;
+    }
+
+    .newsletter form{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .newsletter input,
+    .newsletter button{
+        padding:14px;
+        border-radius:6px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+<div class="container nav">
+
+<a href="#" class="logo">POV<span>MAGA</span></a>
+
+<nav id="mainNav">
+<a href="#home">Home</a>
+<a href="#latest">Latest</a>
+<a href="#technology">Technology</a>
+<a href="#lifestyle">Lifestyle</a>
+<a href="#entertainment">Entertainment</a>
+</nav>
+
+<div class="nav-actions">
+<button id="searchBtn">⌕</button>
+<button id="menuBtn" class="menu-btn">☰</button>
+</div>
+
+</div>
+</header>
+
+<!-- SEARCH -->
+<div class="search-area" id="searchArea">
+<div class="container">
+<input type="text" id="searchInput" placeholder="Search articles...">
+</div>
+</div>
+
+<!-- HERO -->
+<main id="home">
+
+<section class="hero">
+<div class="container hero-grid">
+
+<div class="hero-content">
+
+<span class="badge">WELCOME TO POVMAGA</span>
+
+<h1>
+Fresh Stories.<br>
+New Perspectives.
+</h1>
+
+<p>
+Discover interesting stories, technology, lifestyle,
+entertainment and ideas worth reading.
+</p>
+
+<a href="#latest" class="primary-btn">
+Explore Articles →
+</a>
+
+</div>
+
+<div class="hero-card">
+
+<div class="hero-overlay">
+<span>FEATURED STORY</span>
+
+<h2>
+The Ideas Shaping What Comes Next
+</h2>
+
+<p>
+Explore the latest trends and stories making an impact.
+</p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories">
+
+<div class="container">
+
+<div class="section-heading">
+<div>
+<span class="small-title">EXPLORE</span>
+<h2>Browse Categories</h2>
+</div>
+</div>
+
+<div class="category-grid">
+
+<a href="#technology" class="category-card">
+<div class="category-icon">💻</div>
+<h3>Technology</h3>
+<p>AI, apps, gadgets and digital trends.</p>
+</a>
+
+<a href="#lifestyle" class="category-card">
+<div class="category-icon">✨</div>
+<h3>Lifestyle</h3>
+<p>Ideas for everyday life and modern living.</p>
+</a>
+
+<a href="#entertainment" class="category-card">
+<div class="category-icon">🎬</div>
+<h3>Entertainment</h3>
+<p>People, culture, movies and trending stories.</p>
+</a>
+
+<a href="#latest" class="category-card">
+<div class="category-icon">🔥</div>
+<h3>Trending</h3>
+<p>Popular topics people are reading.</p>
+</a>
+
+</div>
+</div>
+</section>
+
+<!-- ARTICLES -->
+<section class="articles-section" id="latest">
+
+<div class="container">
+
+<div class="section-heading">
+<div>
+<span class="small-title">POVMAGA</span>
+<h2>Latest Articles</h2>
+</div>
+
+<a href="#" class="view-all">View All →</a>
+</div>
+
+<div class="article-grid" id="articleGrid">
+
+<article class="article-card"
+data-title="How Artificial Intelligence Is Changing Everyday Life"
+data-category="Technology">
+
+<div class="article-image tech-image">
+<span>TECHNOLOGY</span>
+</div>
+
+<div class="article-content">
+
+<div class="article-meta">
+<span>Technology</span>
+<span>•</span>
+<span>5 min read</span>
+</div>
+
+<h3>
+How Artificial Intelligence Is Changing Everyday Life
+</h3>
+
+<p>
+From productivity tools to smart devices, AI is
+becoming part of everyday digital experiences.
+</p>
+
+<a href="#" class="read-more">Read Article →</a>
+
+</div>
+</article>
+
+
+<article class="article-card"
+data-title="Simple Ways to Build Better Digital Habits"
+data-category="Lifestyle">
+
+<div class="article-image life-image">
+<span>LIFESTYLE</span>
+</div>
+
+<div class="article-content">
+
+<div class="article-meta">
+<span>Lifestyle</span>
+<span>•</span>
+<span>4 min read</span>
+</div>
+
+<h3>
+Simple Ways to Build Better Digital Habits
+</h3>
+
+<p>
+Small changes to your daily routine can make
+your online experience more productive.
+</p>
+
+<a href="#" class="read-more">Read Article →</a>
+
+</div>
+</article>
+
+
+<article class="article-card"
+data-title="The Trends Everyone Is Talking About"
+data-category="Trending">
+
+<div class="article-image trend-image">
+<span>TRENDING</span>
+</div>
+
+<div class="article-content">
+
+<div class="article-meta">
+<span>Trending</span>
+<span>•</span>
+<span>6 min read</span>
+</div>
+
+<h3>
+The Trends Everyone Is Talking About
+</h3>
+
+<p>
+A closer look at the ideas, topics and conversations
+attracting attention online.
+</p>
+
+<a href="#" class="read-more">Read Article →</a>
+
+</div>
+</article>
+
+
+<article class="article-card"
+data-title="What Makes a Great Online Story"
+data-category="Entertainment">
+
+<div class="article-image ent-image">
+<span>ENTERTAINMENT</span>
+</div>
+
+<div class="article-content">
+
+<div class="article-meta">
+<span>Entertainment</span>
+<span>•</span>
+<span>5 min read</span>
+</div>
+
+<h3>
+What Makes a Great Online Story
+</h3>
+
+<p>
+Why some stories capture attention while others
+disappear from the feed.
+</p>
+
+<a href="#" class="read-more">Read Article →</a>
+
+</div>
+</article>
+
+</div>
+
+<p class="no-results" id="noResults">
+No articles found.
+</p>
+
+</div>
+</section>
+
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+
+<div class="container newsletter-box">
+
+<div>
+
+<span class="small-title">STAY UPDATED</span>
+
+<h2>
+Get the latest from POVMAGA
+</h2>
+
+<p>
+Subscribe for new stories, ideas and trending topics.
+</p>
+
+</div>
+
+<form id="newsletterForm">
+
+<input
+type="email"
+id="email"
+placeholder="Enter your email"
+required
+>
+
+<button type="submit">
+Subscribe
+</button>
+
+</form>
+
+</div>
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+<div class="container footer-grid">
+
+<div>
+
+<a href="#" class="logo footer-logo">
+POV<span>MAGA</span>
+</a>
+
+<p>
+Stories, ideas and perspectives for curious readers.
+</p>
+
+</div>
+
+<div>
+
+<h3>Explore</h3>
+
+<a href="#latest">Latest Articles</a>
+<a href="#technology">Technology</a>
+<a href="#lifestyle">Lifestyle</a>
+<a href="#entertainment">Entertainment</a>
+
+</div>
+
+<div>
+
+<h3>Website</h3>
+
+<a href="#">About Us</a>
+<a href="#">Contact</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms & Conditions</a>
+
+</div>
+
+</div>
+
+<div class="copyright">
+© <span id="year"></span> POVMAGA. All rights reserved.
+</div>
+
+</footer>
+
+
+<button id="topBtn" class="top-btn">↑</button>
+
+
+<script>
+
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById("menuBtn");
+const mainNav = document.getElementById("mainNav");
+
+menuBtn.addEventListener("click", function(){
+    mainNav.classList.toggle("active");
+});
+
+
+/* SEARCH */
+
+const searchBtn = document.getElementById("searchBtn");
+const searchArea = document.getElementById("searchArea");
+const searchInput = document.getElementById("searchInput");
+
+searchBtn.addEventListener("click", function(){
+
+    searchArea.classList.toggle("active");
+
+    if(searchArea.classList.contains("active")){
+        searchInput.focus();
+    }
+
+});
+
+
+/* SEARCH ARTICLES */
+
+const articles = document.querySelectorAll(".article-card");
+const noResults = document.getElementById("noResults");
+
+searchInput.addEventListener("input", function(){
+
+    const searchTerm = searchInput.value.toLowerCase().trim();
+
+    let found = 0;
+
+    articles.forEach(function(article){
+
+        const title =
+            article.dataset.title.toLowerCase();
+
+        const category =
+            article.dataset.category.toLowerCase();
+
+        if(
+            title.includes(searchTerm) ||
+            category.includes(searchTerm)
+        ){
+
+            article.style.display = "";
+            found++;
+
+        }else{
+
+            article.style.display = "none";
+
+        }
+
+    });
+
+    noResults.style.display =
+        found === 0 ? "block" : "none";
+
+});
+
+
+/* NEWSLETTER */
+
+const newsletterForm =
+    document.getElementById("newsletterForm");
+
+newsletterForm.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById("email").value;
+
+    if(email){
+
+        alert("Thanks for subscribing to POVMAGA!");
+
+        newsletterForm.reset();
+
+    }
+
+});
+
+
+/* YEAR */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* BACK TO TOP */
+
+const topBtn =
+    document.getElementById("topBtn");
+
+window.addEventListener("scroll", function(){
+
+    if(window.scrollY > 400){
+
+        topBtn.classList.add("show");
+
+    }else{
+
+        topBtn.classList.remove("show");
+
+    }
+
+});
+
+
+topBtn.addEventListener("click", function(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+
+/* CLOSE MOBILE MENU */
+
+document.querySelectorAll("#mainNav a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+
+        mainNav.classList.remove("active");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
